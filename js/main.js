@@ -13,3 +13,19 @@ function getPlayerChoice() {
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
+
+function playRound() {
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();
+
+    if (playerChoice === computerChoice) return 'Tie!';
+
+    const winningCombos = {
+        'Rock': 'Scissors',
+        'Paper': 'Rock',
+        'Scissors': 'Paper'
+    };
+    const winCheck = winningCombos[playerChoice] === computerChoice;
+
+    return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
+}
