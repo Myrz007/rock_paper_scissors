@@ -25,6 +25,7 @@ function playRound() {
         'Paper': 'Rock',
         'Scissors': 'Paper'
     };
+    
     const winCheck = winningCombos[playerChoice] === computerChoice;
 
     return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
