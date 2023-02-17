@@ -1,13 +1,13 @@
 const choices = [
+    'Scissors',
     'Rock',
-    'Paper',
-    'Scissors'
+    'Paper'
 ];
 
 function getPlayerChoice() {
     let playerChoice = prompt('Choose between Rock (1), Paper (2) and Scissors (3):');
 
-    return choices[(parseInt(playerChoice) - 1) % choices.length];
+    return choices[(parseInt(playerChoice)) % choices.length];
 }
 
 function getComputerChoice() {
