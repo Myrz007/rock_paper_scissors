@@ -32,7 +32,26 @@ function playRound() {
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) console.log(playRound());
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const roundResult = playRound();
+
+        console.log(roundResult);
+
+        if (roundResult !== 'Tie!') {
+            if (roundResult.slice(0, roundResult.indexOf('!')) === 'You Win') playerScore++;
+            else computerScore++;
+        }
+    }
+    
+    if (playerScore === computerScore) console.log('Tie!');
+    else {
+        const resultCheck = playerScore > computerScore;
+
+        console.log(`${resultCheck ? 'Congratulations!' : 'Too bad,'} ${resultCheck ? 'Y' : 'y'}ou ${resultCheck ? 'won' : 'lost'} this match! Score is: Player[${playerScore}] - Computer[${computerScore}]`);
+    }
 }
 
 game();
