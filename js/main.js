@@ -7,7 +7,7 @@ const choices = [
 function getPlayerChoice() {
     let playerChoice = prompt('Choose between Rock (1), Paper (2) and Scissors (3):');
 
-    return choices[(parseInt(playerChoice)) % choices.length];
+    return choices[(parseInt(playerChoice)) % choices.length]; // Limit the index choice from 0 to the choices array length minus one independently of the player input
 }
 
 function getComputerChoice() {
