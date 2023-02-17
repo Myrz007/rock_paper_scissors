@@ -9,3 +9,7 @@ function getPlayerChoice() {
 
     return choices[(parseInt(playerChoice) - 1) % choices.length];
 }
+
+function getComputerChoice() {
+    return choices[Math.floor(Math.random() * choices.length)];
+}
