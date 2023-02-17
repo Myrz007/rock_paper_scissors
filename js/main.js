@@ -30,3 +30,9 @@ function playRound() {
 
     return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) console.log(playRound());
+}
+
+game();
