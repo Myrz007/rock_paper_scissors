@@ -31,6 +31,7 @@ function playRound() {
     return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
 }
 
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -55,3 +56,4 @@ function game() {
 }
 
 game();
+*/
