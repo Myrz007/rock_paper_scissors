@@ -1,9 +1,3 @@
-const choices = [
-    'Scissors',
-    'Rock',
-    'Paper'
-];
-
 function getPlayerChoice() {
     const clickedButton = document.querySelector('button');
     const playerChoice = clickedButton.getAttribute('id');
@@ -12,6 +6,12 @@ function getPlayerChoice() {
 }
 
 function getComputerChoice() {
+    const choices = [
+        'Scissors',
+        'Rock',
+        'Paper'
+    ];
+
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
