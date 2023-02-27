@@ -1,3 +1,5 @@
+const buttons = document.querySelectorAll('button');
+
 function getPlayerChoice() {
     const clickedButton = document.querySelector('button');
     const playerChoice = clickedButton.getAttribute('id');
