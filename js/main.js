@@ -34,6 +34,8 @@ function playRound() {
     return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
 }
 
+buttons.forEach((button) => button.addEventListener('click', () => playRound()));
+
 /*
 function game() {
     let playerScore = 0;
