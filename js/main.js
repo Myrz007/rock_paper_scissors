@@ -5,9 +5,10 @@ const choices = [
 ];
 
 function getPlayerChoice() {
-    let playerChoice = prompt('Choose between Rock (1), Paper (2) and Scissors (3):');
+    const clickedButton = document.querySelector('button');
+    const playerChoice = clickedButton.getAttribute('id');
 
-    return choices[(parseInt(playerChoice)) % choices.length]; // Limit the index choice from 0 to the choices array length minus one independently of the player input
+    return `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
 }
 
 function getComputerChoice() {
