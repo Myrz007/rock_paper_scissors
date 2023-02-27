@@ -18,20 +18,18 @@ function getComputerChoice() {
 }
 
 function playRound() {
-    const playerChoice = getPlayerChoice();
-    const computerChoice = getComputerChoice();
-
-    if (playerChoice === computerChoice) return 'Tie!';
-
     const winningCombos = {
         'Rock': 'Scissors',
         'Paper': 'Rock',
         'Scissors': 'Paper'
     };
     
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();    
     const winCheck = winningCombos[playerChoice] === computerChoice;
+    const resultString = `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
 
-    return `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
+    console.log(playerChoice === computerChoice ? 'Tie!' : resultString);
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => playRound()));
