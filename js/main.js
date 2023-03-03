@@ -3,6 +3,12 @@ const results = document.getElementById('results');
 let playerScore = 0;
 let computerScore = 0;
 
+function getPlayerChoice(button) {
+    let playerChoice = button.id;
+
+    return `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
+}
+
 function getComputerChoice() {
     const choices = [
         'Scissors',
@@ -43,10 +49,7 @@ function getWinner() {
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => {
-    let playerChoice = button.id;
-    playerChoice = `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
-
-    const round = playRound(playerChoice);
+    const round = playRound(getPlayerChoice(button));
 
     game(round);
     getWinner();
