@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll('button');
+const results = document.getElementById('results');
 
 function getComputerChoice() {
     const choices = [
@@ -21,14 +22,17 @@ function playRound(playerSelection) {
     const winCheck = winningCombos[playerSelection] === computerChoice;
     const resultString = `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerSelection : computerChoice} beats ${winCheck ? computerChoice : playerSelection}`;
 
-    console.log(playerSelection === computerChoice ? 'Tie!' : resultString);
+    return playerSelection === computerChoice ? 'Tie!' : resultString;
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => {
     let playerChoice = button.id;
     playerChoice = `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
 
-    console.log(playRound(playerChoice));
+    let result = document.createElement('p');
+    result.textContent = playRound(playerChoice);
+
+    results.appendChild(result);
 }));
 
 /*
