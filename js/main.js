@@ -1,12 +1,5 @@
 const buttons = document.querySelectorAll('button');
 
-function getPlayerChoice() {
-    const clickedButton = document.querySelector('button');
-    const playerChoice = clickedButton.getAttribute('id');
-
-    return `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
-}
-
 function getComputerChoice() {
     const choices = [
         'Scissors',
@@ -17,22 +10,26 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function playRound() {
+function playRound(playerSelection) {
     const winningCombos = {
         'Rock': 'Scissors',
         'Paper': 'Rock',
         'Scissors': 'Paper'
     };
     
-    const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();    
-    const winCheck = winningCombos[playerChoice] === computerChoice;
-    const resultString = `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerChoice : computerChoice} beats ${winCheck ? computerChoice : playerChoice}`;
+    const winCheck = winningCombos[playerSelection] === computerChoice;
+    const resultString = `You ${winCheck ? 'Win' : 'Lose'}! ${winCheck ? playerSelection : computerChoice} beats ${winCheck ? computerChoice : playerSelection}`;
 
-    console.log(playerChoice === computerChoice ? 'Tie!' : resultString);
+    console.log(playerSelection === computerChoice ? 'Tie!' : resultString);
 }
 
-buttons.forEach((button) => button.addEventListener('click', () => playRound()));
+buttons.forEach((button) => button.addEventListener('click', () => {
+    let playerChoice = button.id;
+    playerChoice = `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
+
+    console.log(playRound(playerChoice));
+}));
 
 /*
 function game() {
