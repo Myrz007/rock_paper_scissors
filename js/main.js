@@ -1,5 +1,7 @@
 const buttons = document.querySelectorAll('button');
 const results = document.getElementById('results');
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     const choices = [
@@ -25,39 +27,28 @@ function playRound(playerSelection) {
     return playerSelection === computerChoice ? 'Tie!' : resultString;
 }
 
+function game(round) {
+    if (round !== 'Tie!') {
+        if (round.slice(0, round.indexOf('!')) === 'You Win') playerScore++;
+        else computerScore++;
+    }
+
+    // `${ ? 'Congratulations!' : 'Too bad,'} ${ ? 'Y' : 'y'}ou ${ ? 'won' : 'lost'} this match!`;
+}
+
 buttons.forEach((button) => button.addEventListener('click', () => {
     let playerChoice = button.id;
     playerChoice = `${playerChoice[0].toUpperCase()}${playerChoice.slice(1)}`;
 
+    const round = playRound(playerChoice);
+
+    game(round);
+
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('computer-score').textContent = computerScore;
+
     let result = document.createElement('p');
-    result.textContent = playRound(playerChoice);
+    result.textContent = round;
 
     results.appendChild(result);
 }));
-
-/*
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        const roundResult = playRound();
-
-        console.log(roundResult);
-
-        if (roundResult !== 'Tie!') {
-            if (roundResult.slice(0, roundResult.indexOf('!')) === 'You Win') playerScore++;
-            else computerScore++;
-        }
-    }
-    
-    if (playerScore === computerScore) console.log('Tie!');
-    else {
-        const resultCheck = playerScore > computerScore;
-
-        console.log(`${resultCheck ? 'Congratulations!' : 'Too bad,'} ${resultCheck ? 'Y' : 'y'}ou ${resultCheck ? 'won' : 'lost'} this match! Score is: Player[${playerScore}] - Computer[${computerScore}]`);
-    }
-}
-
-game();
-*/
