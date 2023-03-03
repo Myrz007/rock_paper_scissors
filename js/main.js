@@ -32,8 +32,14 @@ function game(round) {
         if (round.slice(0, round.indexOf('!')) === 'You Win') playerScore++;
         else computerScore++;
     }
+}
 
-    // `${ ? 'Congratulations!' : 'Too bad,'} ${ ? 'Y' : 'y'}ou ${ ? 'won' : 'lost'} this match!`;
+function getWinner() {    
+    if (playerScore === 5) alert('Congratulations! You won');
+    else if (computerScore === 5) alert('Too bad, you lost');
+
+    document.getElementById('player-score').textContent = playerScore;
+    document.getElementById('computer-score').textContent = computerScore;
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => {
@@ -43,12 +49,9 @@ buttons.forEach((button) => button.addEventListener('click', () => {
     const round = playRound(playerChoice);
 
     game(round);
-
-    document.getElementById('player-score').textContent = playerScore;
-    document.getElementById('computer-score').textContent = computerScore;
+    getWinner();
 
     let result = document.createElement('p');
     result.textContent = round;
-
     results.appendChild(result);
 }));
