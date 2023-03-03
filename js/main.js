@@ -33,6 +33,12 @@ function playRound(playerSelection) {
     return playerSelection === computerChoice ? 'Tie!' : resultString;
 }
 
+function getResult(round) {
+    let result = document.createElement('p');
+    result.textContent = round;
+    results.appendChild(result);
+}
+
 function game(round) {
     if (round !== 'Tie!') {
         if (round.slice(0, round.indexOf('!')) === 'You Win') playerScore++;
@@ -52,9 +58,6 @@ buttons.forEach((button) => button.addEventListener('click', () => {
     const round = playRound(getPlayerChoice(button));
 
     game(round);
+    getResult(round);
     getWinner();
-
-    let result = document.createElement('p');
-    result.textContent = round;
-    results.appendChild(result);
 }));
