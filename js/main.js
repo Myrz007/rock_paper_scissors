@@ -46,12 +46,22 @@ function game(round) {
     }
 }
 
-function getWinner() {    
-    if (playerScore === 5) alert('Congratulations! You won');
-    else if (computerScore === 5) alert('Too bad, you lost');
+function newGame(winMessage) {
+    alert(winMessage);
+    window.location.reload();
+}
 
-    document.getElementById('player-score').textContent = playerScore;
-    document.getElementById('computer-score').textContent = computerScore;
+function getWinner() {    
+    if (playerScore === 5) {
+        newGame('Congratulations! You won');
+    }
+    else if (computerScore === 5) {
+        newGame('Too bad, you lost');
+    }
+    else {
+        document.getElementById('player-score').textContent = playerScore;
+        document.getElementById('computer-score').textContent = computerScore;
+    }
 }
 
 buttons.forEach((button) => button.addEventListener('click', () => {
